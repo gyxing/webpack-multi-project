@@ -14,7 +14,7 @@ cd <project_name>
 npm install
 
 # 开发阶段
-npm start <project_name_2>
+npm run dev <project_name_2>
 
 # 打包
 npm run build <project_name_2>
