@@ -57,6 +57,7 @@ module.exports = function(env) {
                 compress: true,
                 open: true,
                 hot: true,
+                proxy: project_config.proxy? project_config.proxy : {}
             },
             watch: true,    // 自动编译
             watchOptions: {
