@@ -158,7 +158,7 @@ module.exports = function(env) {
                             'less-loader'
                         ]
                     }, {
-                        test: /\.(png|jpg|gif|jpeg)/,
+                        test: /\.(png|jpg|gif|jpeg|bmp|eot|ttf|woff|svg)/,
                         use: [
                             {
                                 loader: 'url-loader',

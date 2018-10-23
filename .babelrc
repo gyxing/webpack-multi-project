@@ -1,4 +1,4 @@
 {
-    "presets": [["env", { "modules": false }]],
-    "plugins": ["syntax-dynamic-import"]
+    "presets": [["env", { "modules": false }], "es2015", "stage-2"],
+    "plugins": ["syntax-dynamic-import", "transform-runtime", "transform-object-assign"]
 }
