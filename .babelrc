@@ -1,4 +1,17 @@
 {
-    "presets": [["env", { "modules": false }], "es2015", "stage-2"],
-    "plugins": ["syntax-dynamic-import", "transform-runtime", "transform-object-assign"]
+    "presets": [
+        ["env", { "modules": false }],
+        "stage-2"
+    ],
+    "plugins": [
+        "transform-runtime",
+        "syntax-dynamic-import",
+        "transform-object-assign"
+    ],
+    "comments":false,
+    "env": {
+        "development": {
+            "presets": ["env", "stage-2"]
+        }
+    }
 }

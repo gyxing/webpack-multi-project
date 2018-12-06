@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCss = require('optimize-css-assets-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const templateConfig = require('./public/template/config');
 
@@ -66,6 +67,18 @@ module.exports = function(env) {
             }
         } : {};
 
+        const plugins = [];
+        if (!isDev) {
+            // 删除旧文件
+            /*plugins.push(
+                new CleanWebpackPlugin([project_dir], {
+                    root: path.resolve(__dirname, project_config.product_dir),
+                    verbose: true,
+                    dry: false
+                })
+            )*/
+        }
+
         return {
             entry: project_config.entry,
             output: {
@@ -104,7 +117,8 @@ module.exports = function(env) {
                 // vue-loader处理vue文件
                 new VueLoaderPlugin(),
                 // webpack热加载
-                new webpack.HotModuleReplacementPlugin()
+                new webpack.HotModuleReplacementPlugin(),
+                ...plugins
             ],
             resolve: {
                 extensions: ['.js', '.vue', '.less'],
@@ -167,19 +181,6 @@ module.exports = function(env) {
                                     limit: 10000,
                                     publicPath: '../',
                                     name: `img/[name].[hash:8].[ext]`
-                                }
-                            }, {
-                                loader: "image-webpack-loader",
-                                options: {
-                                    mozjpeg: {
-                                        progressive: true,
-                                    },
-                                    optipng: {
-                                        enabled: false
-                                    },
-                                    pngquant: {
-                                        speed: 4
-                                    }
                                 }
                             }
                         ]
